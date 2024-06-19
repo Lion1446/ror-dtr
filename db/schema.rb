@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2024_06_19_025051) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "departments", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -19,14 +22,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_19_025051) do
 
   create_table "employees", force: :cascade do |t|
     t.string "name"
-    t.integer "department_id", null: false
+    t.bigint "department_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["department_id"], name: "index_employees_on_department_id"
   end
 
   create_table "log_records", force: :cascade do |t|
-    t.integer "employee_id", null: false
+    t.bigint "employee_id", null: false
     t.datetime "time_in"
     t.datetime "time_out"
     t.datetime "created_at", null: false

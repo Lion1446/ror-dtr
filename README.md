@@ -8,17 +8,19 @@ To set up and run this application locally, follow these steps:
 
 ### Prerequisites
 
-- Ruby (version >= 2.5.0)
-- Rails (version >= 6.0.0)
-- PostgreSQL or SQLite database
+This project is built on the following versions
+
+- Ruby (version 3.2.0)
+- Rails (version 7.1.3.4)
+- PostgreSQL
 
 ### Installation
 
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
-   cd daily_time_record_app
+   git clone https://github.com/Lion1446/ror-dtr.git
+   cd ror-dtr
    ```
 
 2. Install dependencies:

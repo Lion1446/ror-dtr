@@ -48,7 +48,7 @@ Start the Rails server:
 rails server
 ```
 
-The application will be accessible at `http://localhost:3000`.
+The application will be accessible at `http://localhost:3000` when ran **locally**.
 
 ## Usage
 
@@ -176,7 +176,3 @@ The application will be accessible at `http://localhost:3000`.
   ```
 
 - Sample data includes departments, employees, and log records for testing and development purposes.
-
----
-
-Feel free to customize this README file further based on your specific application features, additional endpoints, or any special instructions for deployment and usage. This template provides a structured guide for developers and users to understand and utilize your Daily Time Record application effectively.

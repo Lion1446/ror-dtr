@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee: one
+  time_in: 2024-06-19 10:50:50
+  time_out: 2024-06-19 10:50:50
+
+two:
+  employee: two
+  time_in: 2024-06-19 10:50:50
+  time_out: 2024-06-19 10:50:50

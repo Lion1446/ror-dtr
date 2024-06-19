@@ -13,6 +13,10 @@ gem "puma", ">= 5.0"
 gem 'pagy'
 gem 'active_model_serializers'
 gem 'faker'
+gem 'apipie-rails'
+gem 'jsonapi-serializer'
+gem 'rubocop', require: false
+
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"

@@ -48,7 +48,7 @@ Start the Rails server:
 rails server
 ```
 
-The application will be accessible at `http://localhost:3000` when ran **locally**.
+The application will be accessible at `http://localhost:3000/api/v1` when ran **locally**.
 
 ## Usage
 
@@ -61,14 +61,14 @@ The application will be accessible at `http://localhost:3000` when ran **locally
   - Payload: `{"department": {"name": "Engineering"}}`
   - Example:
     ```bash
-    curl -X POST "http://localhost:3000/departments" -d '{"department": {"name": "Engineering"}}' -H "Content-Type: application/json"
+    curl -X POST "http://localhost:3000/api/v1/departments" -d '{"department": {"name": "Engineering"}}' -H "Content-Type: application/json"
     ```
 
 - **Read All Departments**
   - Endpoint: GET `/departments`
   - Example:
     ```bash
-    curl -X GET "http://localhost:3000/departments"
+    curl -X GET "http://localhost:3000/api/v1/departments"
     ```
 
 - **Update a Department**
@@ -76,14 +76,14 @@ The application will be accessible at `http://localhost:3000` when ran **locally
   - Payload: `{"department": {"name": "Sales"}}`
   - Example:
     ```bash
-    curl -X PATCH "http://localhost:3000/departments/1" -d '{"department": {"name": "Sales"}}' -H "Content-Type: application/json"
+    curl -X PATCH "http://localhost:3000/api/v1/departments/1" -d '{"department": {"name": "Sales"}}' -H "Content-Type: application/json"
     ```
 
 - **Delete a Department**
   - Endpoint: DELETE `/departments/:id`
   - Example:
     ```bash
-    curl -X DELETE "http://localhost:3000/departments/1"
+    curl -X DELETE "http://localhost:3000/api/v1/departments/1"
     ```
 
 #### Employees
@@ -93,14 +93,14 @@ The application will be accessible at `http://localhost:3000` when ran **locally
   - Payload: `{"employee": {"name": "John Doe", "department_id": 1}}`
   - Example:
     ```bash
-    curl -X POST "http://localhost:3000/employees" -d '{"employee": {"name": "John Doe", "department_id": 1}}' -H "Content-Type: application/json"
+    curl -X POST "http://localhost:3000/api/v1/employees" -d '{"employee": {"name": "John Doe", "department_id": 1}}' -H "Content-Type: application/json"
     ```
 
 - **Read All Employees**
   - Endpoint: GET `/employees`
   - Example:
     ```bash
-    curl -X GET "http://localhost:3000/employees"
+    curl -X GET "http://localhost:3000/api/v1/employees"
     ```
 
 - **Update an Employee**
@@ -108,14 +108,14 @@ The application will be accessible at `http://localhost:3000` when ran **locally
   - Payload: `{"employee": {"name": "Jane Doe"}}`
   - Example:
     ```bash
-    curl -X PATCH "http://localhost:3000/employees/1" -d '{"employee": {"name": "Jane Doe"}}' -H "Content-Type: application/json"
+    curl -X PATCH "http://localhost:3000/api/v1/employees/1" -d '{"employee": {"name": "Jane Doe"}}' -H "Content-Type: application/json"
     ```
 
 - **Delete an Employee**
   - Endpoint: DELETE `/employees/:id`
   - Example:
     ```bash
-    curl -X DELETE "http://localhost:3000/employees/1"
+    curl -X DELETE "http://localhost:3000/api/v1/employees/1"
     ```
 
 #### Log Records
@@ -125,14 +125,14 @@ The application will be accessible at `http://localhost:3000` when ran **locally
   - Payload: `{"log_record": {"employee_id": 1, "time_in": "2024-06-19T09:00:00Z", "time_out": "2024-06-19T17:00:00Z"}}`
   - Example:
     ```bash
-    curl -X POST "http://localhost:3000/log_records" -d '{"log_record": {"employee_id": 1, "time_in": "2024-06-19T09:00:00Z", "time_out": "2024-06-19T17:00:00Z"}}' -H "Content-Type: application/json"
+    curl -X POST "http://localhost:3000/api/v1/log_records" -d '{"log_record": {"employee_id": 1, "time_in": "2024-06-19T09:00:00Z", "time_out": "2024-06-19T17:00:00Z"}}' -H "Content-Type: application/json"
     ```
 
 - **Read All Log Records**
   - Endpoint: GET `/log_records`
   - Example:
     ```bash
-    curl -X GET "http://localhost:3000/log_records"
+    curl -X GET "http://localhost:3000/api/v1/log_records"
     ```
 
 - **Update a Log Record**
@@ -140,14 +140,14 @@ The application will be accessible at `http://localhost:3000` when ran **locally
   - Payload: `{"log_record": {"time_out": "2024-06-19T18:00:00Z"}}`
   - Example:
     ```bash
-    curl -X PATCH "http://localhost:3000/log_records/1" -d '{"log_record": {"time_out": "2024-06-19T18:00:00Z"}}' -H "Content-Type: application/json"
+    curl -X PATCH "http://localhost:3000/api/v1/log_records/1" -d '{"log_record": {"time_out": "2024-06-19T18:00:00Z"}}' -H "Content-Type: application/json"
     ```
 
 - **Delete a Log Record**
   - Endpoint: DELETE `/log_records/:id`
   - Example:
     ```bash
-    curl -X DELETE "http://localhost:3000/log_records/1"
+    curl -X DELETE "http://localhost:3000/api/v1/log_records/1"
     ```
 
 ### Pagination
@@ -157,10 +157,10 @@ The application will be accessible at `http://localhost:3000` when ran **locally
 - Example:
   ```bash
   # Get the first page of departments with 10 items per page
-  curl -X GET "http://localhost:3000/departments?page=1&items=10"
+  curl -X GET "http://localhost:3000/api/v1/departments?page=1&items=10"
   
   # Get the second page of employees with default items per page
-  curl -X GET "http://localhost:3000/employees?page=2"
+  curl -X GET "http://localhost:3000/api/v1/employees?page=2"
   ```
 
 ### Item Counts

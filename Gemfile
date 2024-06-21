@@ -16,6 +16,8 @@ gem 'faker'
 gem 'apipie-rails'
 gem 'jsonapi-serializer'
 gem 'rubocop', require: false
+gem 'dotenv-rails'
+gem 'rubocop-rails'
 
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]

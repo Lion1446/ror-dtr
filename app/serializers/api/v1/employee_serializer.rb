@@ -1,4 +1,4 @@
-class EmployeeSerializer < ActiveModel::Serializer
+class Api::V1::EmployeeSerializer < ActiveModel::Serializer
   include JSONAPI::Serializer
   attributes :id, :name, :department_id
   belongs_to :department

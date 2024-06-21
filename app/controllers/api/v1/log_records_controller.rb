@@ -1,17 +1,19 @@
 class Api::V1::LogRecordsController < Api::V1::BaseController
   include Pagy::Backend
 
+  before_action :find_log_record, only: [:show, :update, :destroy]
+
   api :GET, "/api/v1/log_records", "Get a paginated list of log records"
   param :page, :number, desc: "Page number for pagination", required: false
   param :items, :number, desc: "Number of items per page", required: false
   returns code: 200, desc: "OK"
-  returns code: 401, desc: "Unauthorized"
   returns code: 500, desc: "Internal Server Error"
+
   def index
     pagy, log_records = pagy(LogRecord.all, items: params[:items] || 10)
     render json: {
-      log_records: LogRecordSerializer.new(log_records).serializable_hash,
-      pagination:  pagy_metadata(pagy)
+      log_records: Api::V1::LogRecordSerializer.new(log_records).serializable_hash,
+      pagination: pagy_metadata(pagy)
     }, status: :ok
   end
 
@@ -23,11 +25,11 @@ class Api::V1::LogRecordsController < Api::V1::BaseController
   end
   returns code: 201, desc: "Created"
   returns code: 400, desc: "Bad Request"
-  returns code: 401, desc: "Unauthorized"
+
   def create
     log_record = LogRecord.new(log_record_params)
     if log_record.save
-      render json: LogRecordSerializer.new(log_record).serializable_hash, status: :created
+      render json: Api::V1::LogRecordSerializer.new(log_record).serializable_hash, status: :created
     else
       render json: { error: log_record.errors.full_messages }, status: :unprocessable_entity
     end
@@ -37,9 +39,9 @@ class Api::V1::LogRecordsController < Api::V1::BaseController
   param :id, :number, desc: "ID of the log record", required: true
   returns code: 200, desc: "OK"
   returns code: 404, desc: "Not Found"
+
   def show
-    log_record = LogRecord.find(params[:id])
-    render json: LogRecordSerializer.new(log_record).serializable_hash, status: :ok
+    render json: Api::V1::LogRecordSerializer.new(@log_record).serializable_hash, status: :ok
   end
 
   api :PATCH, "/api/v1/log_records/:id", "Update a specific log record"
@@ -52,28 +54,37 @@ class Api::V1::LogRecordsController < Api::V1::BaseController
   returns code: 200, desc: "OK"
   returns code: 400, desc: "Bad Request"
   returns code: 404, desc: "Not Found"
+
   def update
-    log_record = LogRecord.find(params[:id])
-    if log_record.update(log_record_params)
-      render json: LogRecordSerializer.new(log_record).serializable_hash, status: :ok
+    if @log_record.update(log_record_params)
+      render json: Api::V1::LogRecordSerializer.new(@log_record).serializable_hash, status: :ok
     else
-      render json: { error: log_record.errors.full_messages }, status: :unprocessable_entity
+      render json: { error: @log_record.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
   api :DELETE, "/api/v1/log_records/:id", "Delete a specific log record"
   param :id, :number, desc: "ID of the log record", required: true
-  returns code: 204, desc: "No Content"
+  returns code: 200, desc: "OK"
   returns code: 404, desc: "Not Found"
+  
   def destroy
-    log_record = LogRecord.find(params[:id])
-    log_record.destroy
-    head :no_content
+    if @log_record.destroy
+      render json: { message: "Successfully deleted log record with ID #{params[:id]}" }, status: :ok
+    else
+      render json: { error: "Failed to delete log record" }, status: :unprocessable_entity
+    end
   end
 
   private
 
   def log_record_params
     params.require(:log_record).permit(:employee_id, :time_in, :time_out)
+  end
+
+  def find_log_record
+    @log_record = LogRecord.find_by_id(params[:id])
+
+    render json: { error: "Log record not found" }, status: :not_found if @log_record.nil?
   end
 end

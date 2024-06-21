@@ -23,10 +23,13 @@ end
 # Create Log Records
 employees.each do |employee|
   10.times do
+    time_in = Faker::Time.backward(days: 5, period: :morning)
+    time_out = time_in + rand(1..8).hours
+
     LogRecord.create!(
       employee: employee,
-      time_in: Faker::Time.backward(days: 10, period: :morning),
-      time_out: Faker::Time.backward(days: 10, period: :evening)
+      time_in: time_in,
+      time_out: time_out
     )
   end
 end

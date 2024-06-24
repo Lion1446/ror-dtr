@@ -1,7 +1,7 @@
 class Api::V1::DepartmentsController < Api::V1::BaseController
   include Pagy::Backend
 
-  before_action :find_department, %i[show update destroy]
+  before_action :find_department, only: [:show, :update, :destroy]
 
   api :GET, "/departments", "Get a paginated list of departments"
   param :page, :number, desc: "Page number for pagination"

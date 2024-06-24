@@ -95,9 +95,6 @@ GEM
     connection_pool (2.4.1)
     crass (1.0.6)
     date (3.3.4)
-    debug (1.9.2)
-      irb (~> 1.10)
-      reline (>= 0.3.8)
     dotenv (3.1.2)
     dotenv-rails (3.1.2)
       dotenv (= 3.1.2)
@@ -246,7 +243,6 @@ DEPENDENCIES
   active_model_serializers
   apipie-rails
   bootsnap
-  debug
   dotenv-rails
   faker
   jsonapi-serializer

@@ -1,0 +1,45 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+}
+
+.table-container {
+    max-height: 80vh;
+    overflow-y: auto;
+    width: 100vw;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.table th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+.table td {
+    text-align: left;
+}
+
+.btn {
+    margin-top: 10px;
+}
+
+.button-container {
+    width: 200px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    background-color: #1976d2;
+    align-items: center;
+    text-align: center;
+    border-radius: 5px;
+  }
+  
